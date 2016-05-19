@@ -1,0 +1,18 @@
+<div class="page_inner-tasks-wr">
+    <div class="task" ng-repeat="todo in filteredTodos= (todos | orderBy: ['status' , 'duedate'] | filter:{isDone:status, $:query, tags:sortTags} ) | pages: currentPage : itemsPerPage">
+        <div class="status-label" ng-class="{ 'visible' : todo.status == 'new' }">new</div>
+        <div class="task_color" data-color="{{ todo.color }}"></div>
+        <div class="ready-chkbx">
+            <input type="checkbox" id="{{ todo.id }}" ng-checked="{{todo.isDone}}" ng-click="updateStatusTodo(todo)">
+            <label for="{{ todo.id }}"><i class="glyphicon glyphicon-ok"></i></label>
+        </div>
+        <p class="task_title" ng-class="{ 'ready' : todo.ready == true }">{{ todo.text }}</p>
+        <div class="task_settings">
+            <p class="tags"><a href="#/tags/{{tag.name}}" ng-repeat="tag in getTodoTags(todo)">{{ tag.name }}</a></p>
+            <p class="duedate" ng-class=" { 'not-actual' : isActual(todo.duedate) == false } ">{{ todo.duedate | date:"dd.MM.yyyy" }}</p>
+            <a href type="button" ng-click="popupState.isEditing = true; popupState.isCreating = false; setPopupValue(); editTodo(todo);"><i class="glyphicon glyphicon-pencil"></i></a>
+            <a href ng-click="deleteTodo(todo.id)"><i class="glyphicon glyphicon-trash"></i></a>
+        </div>
+    </div>
+    <add-popup></add-popup>
+</div>

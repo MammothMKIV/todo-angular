@@ -1,0 +1,40 @@
+<div class="popup-wr" ng-show="popupState.showPopup">
+    <form name="addForm" ng-submit="addForm.$valid && submitForm(currentTodo)" novalidate>
+        <section class="popup mod-add">
+            <div class="popup_close" ng-click="setPopupValue(); resetTodo(currentTodo)">
+                <i class="glyphicon glyphicon-remove"></i>
+            </div>
+            <header class="popup_header clearfix">
+                <div class="due-date" ng-controller="DatepickerCtrl">
+                    <button class="due-date_icon" type="button" ng-click="Open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    <input type="text" uib-datepicker-popup="{{format}}" ng-model="currentTodo.duedate" is-open="popup.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" required alt-input-formats="altInputFormats" />
+                </div>
+            </header>
+            <div class="popup_body">
+                <div class="popup_title">
+                   <input type="text" ng-model="currentTodo.text" placeholder="New Task" required>
+                </div>
+                <div class="popup_dscr">
+                   <textarea ng-model="currentTodo.description" placeholder="Task Description"></textarea>
+                </div>
+                <div class="popup_tags">
+                    <i class="glyphicon glyphicon-tags"></i>
+                    <multiple-autocomplete ng-model="currentTodo.tags"
+                                           object-property="name"
+                                           suggestions-arr="tagList"
+                                           required>
+                    </multiple-autocomplete>
+                </div>
+                <div class="popup_color" >
+                    <div class="color" ng-repeat="radio in radios">
+                        <input type="radio" id="{{ radio.color }}" name="color" data-color="{{ radio.color }}" ng-model="currentTodo.color" ng-value="radio.color" required>
+                        <label for="{{ radio.color }}"></label>
+                    </div>
+                </div>
+            </div>
+            <footer class="popup_footer clearfix">
+                <input type="submit" value="Save" class="btn save-btn" ng-disabled="addForm.$invalid" ng-click = "setPopupValue();">
+            </footer>
+        </section>
+    </form>
+</div>

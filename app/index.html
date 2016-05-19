@@ -1,0 +1,131 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>TODO</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link rel="stylesheet" href="bower_components/select2/select2.min.css">
+    <link rel="stylesheet" href="bower_components/angularMultipleSelect/build/multiple-select.min.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body ng-app="todoApp" ng-controller="MainController">
+    <div class="wrapper" ng-class="{ 'full' : fullWidth }">
+        <div class="menu" ng-class="{ 'closed' : fullWidth }">
+            <div class="menu_header">
+                <div class="logo"><img src="images/logo.png" alt=""></div>
+            </div>
+            <div class="menu_user">
+                <div class="menu_user-details">
+                    <div class="user-avatar">
+                        <img src="images/avatar.png" alt="">
+                    </div>
+                    <div class="user-name">
+                        Anastasia
+                    </div>
+                </div>
+            </div>
+            <div class="menu_nav">
+                <span><a href="#/"><i class="glyphicon glyphicon-signal"></i>My Dashboard</a></span>
+                <span class="menu_nav-title">Teams</span>
+                <span><a href="#/"><i class="glyphicon glyphicon-list-alt"></i>List</a></span>
+                <span><a href="#/"><i class="glyphicon glyphicon-calendar"></i>Calendar</a></span>
+                <span><a href="#/"><i class="glyphicon glyphicon-envelope"></i>Invites <span class="label label-primary">8</span></a>
+                </span>
+                <span class="menu_nav-title">Settings</span>
+                <span><a href="#/"><i class="glyphicon glyphicon-picture"></i>Theme</a></span>
+                <span><a href="#/"><i class="glyphicon glyphicon-cog"></i>Settings</a></span>
+
+            </div>
+        </div>
+        <div class="header">
+            <button class="menu-button" ng-class="{ 'full' : fullWidth }" ng-click="fullWidth = !fullWidth"><i class="glyphicon glyphicon-menu-hamburger"></i></button>
+            <div class="searchbox">
+                <span><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" placeholder="Search" ng-model="query">
+            </div>
+            <div class="user-menu">
+                <div class="user-avatar">
+                    <img src="images/avatar.png" alt="">
+                </div>
+                <div class="user-name">
+                    Anastasia
+                </div>
+                <div class="user-menu_nav">
+                    <i class="glyphicon glyphicon-menu-down" ng-click="showUserMenu = !showUserMenu"></i>
+                    <div class="user-menu_dropdown" ng-show="showUserMenu">
+                        <span><a href="#/"><i class="glyphicon glyphicon-user"></i>Profile</a></span>
+                        <span><a href="#/"><i class="glyphicon glyphicon-cog"></i>Settings</a></span>
+                        <span class="divider"></span>
+                        <span><a href="#/"><i class="glyphicon glyphicon-log-out"></i>Log Out</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page clearfix">
+            <div class="page_header">
+                <h1>My Tasks</h1>
+                <div class="page_header-nav">
+                    <span><a href="#/">List</a></span>
+                    <span><a href="#/calendar">Calendar</a></span>
+                </div>
+            </div>
+            <div class="page_inner">
+                <div ng-view=""></div>
+            </div>
+        </div>
+
+        <div class="footer">
+        </div>
+    </div>
+
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
+    <script src="bower_components/angularMultipleSelect/build/multiple-select.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/routing.js"></script>
+    <!-- endbuild -->
+
+    <!--Controllers-->
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/calendar.js"></script>
+    <script src="scripts/controllers/datetimepicker.js"></script>
+    <script src="scripts/controllers/pagination.js"></script>
+    <script src="scripts/controllers/popup.js"></script>
+
+    <!--Provider-->
+    <script src="scripts/services/taskProvider.js"></script>
+    <script src="scripts/services/tagsProvider.js"></script>
+    <script src="scripts/services/radioProvider.js"></script>
+    <script src="scripts/services/filterProvider.js"></script>
+
+    <!--Directives-->
+    <script src="scripts/directives/directives.js"></script>
+
+</body>
+
+</html>

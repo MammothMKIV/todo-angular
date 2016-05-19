@@ -1,0 +1,26 @@
+<div class="page_inner-header clearfix">
+    <button class="btn add-btn" ng-click="popupState.isCreating = true; popupState.isEditing = false; setPopupValue()">
+        <i>+</i>
+    </button>
+    <div class="page_inner-sorting">
+        <p ng-click="showSorting = !showSorting">
+            View: <span>{{ getFilterName() }}</span> <i class="glyphicon glyphicon-menu-down"></i>
+        </p>
+        <div class="page_inner-sorting_dropdown" ng-show="showSorting">
+            <p>Recommended Views</p>
+            <div class="filters" ng-repeat=" filter in filters">
+                <span><a href="#/todos/{{filter.status}}" ng-class = "{ 'isActive' : filter.status === sortStatus }">{{ filter.text }}<i class="glyphicon glyphicon-ok"></i></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="PaginationCtrl">
+  <div class="clearfix">
+    <task-template></task-template>
+  </div>
+
+  <div class="clearfix">
+      <uib-pagination total-items="filteredTodos.length" ng-model="currentPage" class="pagination-sm pull-right" items-per-page="itemsPerPage" ng-disabled="todos < totalItems"></uib-pagination>
+  </div>
+</div>
